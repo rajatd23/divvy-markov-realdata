@@ -1,0 +1,21 @@
+divvy:
+  gbfs_auto_discovery_url: "https://gbfs.divvybikes.com/gbfs/2.3/gbfs.json"
+
+collection:
+  # Use this when running in loop mode
+  interval_seconds: 300   # 5 minutes
+  snapshots_dir: "data/snapshots"
+
+state_binning:
+  # We compute availability_ratio = bikes_available / (bikes_available + docks_available)
+  # Then assign states using thresholds below.
+  # EMPTY is a special rule when bikes_available == 0.
+  low_max: 0.20
+  medium_max: 0.60
+  # else -> HIGH
+
+model:
+  # How many steps to simulate after learning transitions from real data
+  n_entities: 5000
+  n_steps: 60
+  seed: 42
